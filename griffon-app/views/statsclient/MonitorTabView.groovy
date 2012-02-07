@@ -4,6 +4,7 @@ import java.awt.BorderLayout
 import java.awt.Color
 import javax.swing.JSplitPane
 import net.miginfocom.swing.MigLayout
+import javax.swing.JTable
 
 panel(id: 'root', layout: new MigLayout(), constraints: 'w 100%, h 100%') {
 
@@ -31,7 +32,7 @@ panel(id: 'root', layout: new MigLayout(), constraints: 'w 100%, h 100%') {
                     }
                 }
                 scrollPane(constraints: 'Center') {
-                    table(id: 'statsTable', constraints: 'w 100%, h 100%') {
+                    table(id: 'statsTable', constraints: 'w 100%, h 100%', autoResizeMode:JTable.AUTO_RESIZE_OFF) {
                     }
                 }
             }
@@ -39,7 +40,7 @@ panel(id: 'root', layout: new MigLayout(), constraints: 'w 100%, h 100%') {
 
         panel(layout: new MigLayout(), constraints: 'w 100%, h 100%') {
             scrollPane(constraints: 'w 100%, h 100%') {
-                table(id: 'detailTable', constraints: 'w 100%, h 100%') {
+                table(id: 'detailTable', constraints: 'w 100%, h 100%', autoResizeMode:JTable.AUTO_RESIZE_OFF) {
                 }
             }
         }

@@ -1,5 +1,7 @@
 package statsclient
 
+import javax.swing.table.TableColumnModel
+
 class MonitorTabController {
     def model
     def view
@@ -10,12 +12,13 @@ class MonitorTabController {
 
         def statsModel = new StatsTableSorter(model.statsData)
         view.statsTable.model = statsModel
-        statsModel.addMouseListenerToHeaderInTable(view.statsTable)
-
+        view.statsTable.model.addMouseListenerToHeaderInTable(view.statsTable)
+        setDefaultColumnWidths(view.statsTable)
 
         def detailModel = new StatsTableSorter(model.detailData)
         view.detailTable.model = detailModel
-        detailModel.addMouseListenerToHeaderInTable(view.detailTable)
+        view.detailTable.model.addMouseListenerToHeaderInTable(view.detailTable)
+        setDefaultColumnWidths(view.detailTable)
 
         view.rbFirm.actionPerformed = { evt ->
             switchRollup(MonitorTabModel.FIRM)
@@ -35,6 +38,14 @@ class MonitorTabController {
         timer.cancel()
     }
 
+
+    // todo: currently fixed width - either use preferred size of header, or a configured value
+    def setDefaultColumnWidths = { table ->
+        TableColumnModel columns = table.getColumnModel();
+        columns.each {column ->
+            column.preferredWidth = 50
+        }
+    }
 
     void switchRollup(String value) {
 
