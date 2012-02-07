@@ -25,9 +25,9 @@ panel(id: 'root', layout: new MigLayout(), constraints: 'w 100%, h 100%') {
         panel(layout: new MigLayout(), constraints: 'w 100%, h 100%') {
             panel(layout: new BorderLayout(), constraints: 'w 100%, h 100%') {
                 panel(layout: new MigLayout("align right"), constraints: "North") {
-                    buttonGroup().with { group ->
-                        radioButton(text: 'Firm', buttonGroup: group)
-                        radioButton(text: 'Cloud', buttonGroup: group)
+                    buttonGroup(id: 'firm-cloud').with { group ->
+                        radioButton(id: 'rbFirm', text: 'Firm', buttonGroup: group, selected: bind {model.rollupMode == MonitorTabModel.FIRM})
+                        radioButton(id: 'rbCloud', text: 'Cloud', buttonGroup: group, selected: bind {model.rollupMode == MonitorTabModel.CLOUD})
                     }
                 }
                 scrollPane(constraints: 'Center') {

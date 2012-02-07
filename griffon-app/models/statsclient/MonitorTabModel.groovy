@@ -4,9 +4,15 @@ import groovy.beans.Bindable
 
 class MonitorTabModel {
 
+    static final FIRM = "firm"
+    static final CLOUD = "cloud"
+
     def name;
 
     def dateFormat = "hh:mm:ss:SSS"
+
+    @Bindable
+    def rollupMode = CLOUD;
 
     @Bindable
     def statsData = new StatsTableModel()
@@ -20,7 +26,6 @@ class MonitorTabModel {
     @Bindable lastUpdateComplete = new Date().format(dateFormat)
 
     def update = {
-        System.out.println("updating ${name}")
         lastUpdate = new Date().format(dateFormat)
         statsData.update()
         lastUpdateComplete = new Date().format(dateFormat)

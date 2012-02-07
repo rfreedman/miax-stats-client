@@ -26,20 +26,6 @@ class StatsController {
 
      }
 
-
-    def update = { evt = null ->
-        model.update()
-    }
-
-    class ModelUpdateTimerTask extends TimerTask {
-        @Override
-        void run() {
-            update();
-        }
-
-    }
-    
-
      void activeDocumentChanged() {
          /*
         // de-activate the existing active document

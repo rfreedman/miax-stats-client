@@ -52,7 +52,14 @@ public class StatsTableSorter extends TableSorter {
     }
 
     public void tableChanged(TableModelEvent e) {
-       super.tableChanged(e);
+       //super.tableChanged(e);
+
+       // bypass super.tableChanged because it prints annoying stuff to the console
+       // see http://jira.codehaus.org/browse/GROOVY-5270 - should be fixed for 1.8.6 and 2.0-beta-3
+       reallocateIndexes();
+       fireTableChanged(e);
+
+       // re-apply the current sort
        reSort();
     }
 }
