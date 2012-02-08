@@ -1,6 +1,5 @@
 application {
     title = 'GriffonStats'
-    //startupGroups = ['griffonStats']
     startupGroups = ['mainMenu']
 
     // Should Griffon exit when no Griffon created frames are showing?

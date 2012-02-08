@@ -1,33 +1,82 @@
 package statsclient
 
 import groovy.beans.Bindable
+import groovy.util.logging.Log
 
+@Log
 class MonitorTabModel {
 
-    static final FIRM = "firm"
-    static final CLOUD = "cloud"
+    static enum StatsDataView {
+        SERVICE, FIRM, CLOUD, INSTANCE, SYSLOG
+
+        def getData = { statsData ->
+            def dataSubset = null
+            switch (this) {
+                case SERVICE:
+                    dataSubset = statsData.serviceData
+                    break
+
+                case FIRM:
+                    dataSubset = statsData.firmData
+                    break
+
+                case CLOUD:
+                    dataSubset = statsData.cloudData
+                    break
+
+                case INSTANCE:
+                    dataSubset = statsData.instanceData
+                    break
+
+                case SYSLOG:
+                    break
+
+            }
+
+            return dataSubset
+        }
+    }
 
     def name;
 
-    def dateFormat = "hh:mm:ss:SSS"
-
     @Bindable
-    def rollupMode = CLOUD;
+    def rollupMode = StatsDataView.CLOUD;
 
-    @Bindable
-    def statsData = new StatsTableModel()
+    def statsData // the data for all levels
 
-    @Bindable
-    def detailData = this.statsData // todo - this should be the real detail data
+    Map<StatsDataView, Set<Object>> subscriberLists = new HashMap<MonitorTabModel.StatsDataView, Set<Object>>();
 
-    @Bindable
-    def lastUpdate = new Date().format(dateFormat)
+    def subscribe(StatsDataView dataView, Object subscriber) {
 
-    @Bindable lastUpdateComplete = new Date().format(dateFormat)
+        def subscribers = subscriberLists.get(dataView)
+        if (subscribers == null) {
+            subscribers = new HashSet<Object>()
+            subscriberLists.put(dataView, subscribers)
+        }
+        subscribers << subscriber
+    }
 
-    def update = {
-        lastUpdate = new Date().format(dateFormat)
-        statsData.update()
-        lastUpdateComplete = new Date().format(dateFormat)
+    def unSubscribe(StatsDataView dataView, Object subscriber) {
+        def subscribers = subscriberLists.get(dataView)
+        if (subscribers) {
+            subscribers.remove(subscriber)
+        }
+    }
+
+    def onUpdate = { data ->
+        statsData = data
+
+        StatsDataView.each {dataView ->
+            Set<Object> subscriberList = subscriberLists.get(dataView)
+            if (subscriberList != null) {
+
+                def subset = dataView.getData(statsData)
+
+                subscriberList.each {subscriber ->
+                    subscriber.onUpdate(subset)
+                }
+            }
+        }
+
     }
 }

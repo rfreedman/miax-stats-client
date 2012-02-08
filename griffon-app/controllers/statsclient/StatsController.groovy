@@ -1,37 +1,53 @@
 package statsclient
 
+import groovy.util.logging.Log
+import griffon.core.MVCGroup
+
+@Log
 class StatsController {
     // these will be injected by Griffon
     def model
     def view
     def dataService
 
+    List<MVCGroup> tabMVCGroups = new ArrayList<MVCGroup>()
+
+    String mvcName
+    def statsColumnConfig
+
     void mvcGroupInit(Map args) {
+        mvcName = args.mvcName
 
-        // todo - replace this with getting the column config from the server, and set it on the model
-        model.generateFakeColumnConfig()
+        statsColumnConfig = dataService.getGlobalColumnConfig()
+        dataService.getTabNames().each(createStatsTab)
 
-       dataService.getTabNames().each(createStatsTab)
+        view.documents.selectedIndex = 0
 
-       view.documents.selectedIndex = 0
+        dataService.subscribe(model.onUpdate)
+    }
 
-       model.generateFakeData()
-     }
+    def createStatsTab = { statName ->
+        String id = statName
+        def tabMVCGroup = buildMVCGroup('monitorTab', id, tabs: view.documents, id: id, name: id, statsColumnConfig:statsColumnConfig, statsModel: model)
+        tabMVCGroups.add(tabMVCGroup)
+        view.documents.addTab(id, tabMVCGroup.view.root)
+    }
 
+    def shutdown = {
+        destroyMVCGroup(mvcName)
+    }
 
-     def createStatsTab = { statName ->
-         String id = statName
-         def document = buildMVCGroup('monitorTab', id,   tabs: view.documents, id: id, name: id)
-         view.documents.addTab(id, document.view.root)
-     }
-
-     void mvcGroupDestroy() {
+    void mvcGroupDestroy() {
         // this method is called when the group is destroyed
+        log.info("window closing, so unsubscribing")
+        dataService.unsubscribe()
+        tabMVCGroups.each {mvcGroup ->
+            mvcGroup.destroy()
+        }
+    }
 
-     }
-
-     void activeDocumentChanged() {
-         /*
+    void activeDocumentChanged() {
+        /*
         // de-activate the existing active document
         if (model.activeDocument) {
             model.activeDocument.controller.deactivate()

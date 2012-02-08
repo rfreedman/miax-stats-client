@@ -4,17 +4,16 @@ import groovy.json.JsonSlurper
 import groovy.json.JsonBuilder
 import groovy.util.logging.Log
 
+// TODO - make this handle multiple subscriptions, to support multiple windows open for the same or different services
+// do this by having a collection of service-specific classes that have the functionality currently present in this class
 @Log
 class DataService {
 
-    final int COL_COUNT = 25; // number of fake columns of numeric data
-    final random = new Random(new Date().getTime())
-
+    def dataCallbackClosure
 
     // the names of the tabs - for now, this maps to the individual statistics types - one tab per stat
     // later, we may support custom tabs
     def getTabNames = {
-       //["Capacity", "Latency", "Custom1", "Custom2"]
        def tabNamesJson = getTabNamesJson()
        def tabNames = new JsonSlurper().parseText(tabNamesJson).tabNames
        log.info("tabNamesJson: ${tabNamesJson}, tabNames: ${tabNames}")
@@ -47,6 +46,43 @@ class DataService {
         // todo - get this from the monitor-server, keyed by the service name
         generateFakeColumnConfig()
     }
+
+    def subscribe = { closure ->
+        this.dataCallbackClosure = closure
+        fakeSubscribeImpl()
+    }
+
+    def unsubscribe = {
+        fakeUnsubscribeImpl()
+    }
+
+    // ================================== fake data services ===========================================================
+
+    Timer fakeTimer = new Timer();
+    TimerTask timerTask = new FakeModelUpdateTimerTask();
+    final int COL_COUNT = 25; // number of fake columns of numeric data
+    final random = new Random(new Date().getTime())
+
+    class FakeModelUpdateTimerTask extends TimerTask {
+        @Override
+        void run() {
+           def jsonData = generateFakeData()
+           def data = new JsonSlurper().parseText(jsonData).data
+           dataCallbackClosure(data)
+        }
+    }
+
+    def fakeSubscribeImpl = {
+        // in the real implementation, we would use CometD to subscribe to a Bayeux Channel
+        fakeTimer.scheduleAtFixedRate(timerTask, 2000, 2000)
+    }
+
+    def fakeUnsubscribeImpl = {
+        fakeTimer.cancel()
+        fakeTimer = new Timer()
+        timerTask = new FakeModelUpdateTimerTask();
+    }
+
 
     def generateFakeTabNames = {
         def json = new JsonBuilder()
@@ -119,7 +155,7 @@ class DataService {
                 instanceData: generateFakeInstanceData()
         ]
 
-        jsonData = json.toPrettyString()
+        json.toPrettyString()
     }
 
     def generateFakeServiceData = {
