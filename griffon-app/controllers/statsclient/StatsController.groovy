@@ -4,14 +4,18 @@ class StatsController {
     // these will be injected by Griffon
     def model
     def view
-
+    def dataService
 
     void mvcGroupInit(Map args) {
 
-       // todo - get the stats from configuration
-       ["Capacity", "Latency", "Custom1", "Custom2"].each(createStatsTab)
-        
+        // todo - replace this with getting the column config from the server, and set it on the model
+        model.generateFakeColumnConfig()
+
+       dataService.getTabNames().each(createStatsTab)
+
        view.documents.selectedIndex = 0
+
+       model.generateFakeData()
      }
 
 

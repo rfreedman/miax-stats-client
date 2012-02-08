@@ -1,42 +1,60 @@
 package statsclient
 
-import groovy.json.JsonBuilder
 import groovy.json.JsonSlurper
+import groovy.json.JsonBuilder
 import groovy.util.logging.Log
 
 @Log
-class StatsModel {
+class DataService {
 
     final int COL_COUNT = 25; // number of fake columns of numeric data
     final random = new Random(new Date().getTime())
 
-    /*
-     * This is where we subscribe to stats published by the monitor-server app.
-     *
-     * When stats are received (data for all 4 tables) as JSON, we will decode
-     * the JSON data and push it to three table models.
-     *
-     * The individual tab's models will bind to these 4 table models,
-     * and build their own table models that are subsets of these.
-     *
-     */
 
-
-    def jsonColumnConfig = "{}"
-    def jsonData = "{}"
-
-    def dumpColumnConfig = {
-        def columnConfigs = new JsonSlurper().parseText(jsonColumnConfig).columnConfigs
-        log.info "columnConfigs = ${columnConfigs}"
+    // the names of the tabs - for now, this maps to the individual statistics types - one tab per stat
+    // later, we may support custom tabs
+    def getTabNames = {
+       //["Capacity", "Latency", "Custom1", "Custom2"]
+       def tabNamesJson = getTabNamesJson()
+       def tabNames = new JsonSlurper().parseText(tabNamesJson).tabNames
+       log.info("tabNamesJson: ${tabNamesJson}, tabNames: ${tabNames}")
+       return tabNames
     }
 
+    // the names of the all of the columns for each rollup type
+    // this includes all of the stat columns for all of the stat types,
+    // and will be subset for the model for each tab
+    def getGlobalColumnConfig = {
+        def jsonColumnConfig = generateFakeColumnConfig()
+        def columnConfigs = new JsonSlurper().parseText(jsonColumnConfig).columnConfigs
+        return columnConfigs
+    }
+
+    /*
     def dumpJson = {
+        def jsonData = "{}"
         def data = new JsonSlurper().parseText(jsonData).data
         log.info "serviceData = ${data ? data.serviceData : 'null'}"
     }
+    */
+
+    def getTabNamesJson = {
+        // todo - get this from the monitor-server, keyed by the service name, and later, possibly by the user name
+        generateFakeTabNames()
+    }
+
+    def getColumnConfigJson = {
+        // todo - get this from the monitor-server, keyed by the service name
+        generateFakeColumnConfig()
+    }
+
+    def generateFakeTabNames = {
+        def json = new JsonBuilder()
+        json tabNames: ["Capacity", "Latency", "Custom1", "Custom2"]
+        json.toPrettyString()
+    }
 
     // generate column configs for our fake data
-    // todo - get this from the monitor-server, keyed by the service name
     def generateFakeColumnConfig = {
         def json = new JsonBuilder()
 
@@ -46,7 +64,7 @@ class StatsModel {
                 cloudColumns: generateFakeCloudColumnConfig(),
                 instanceColumns: generateFakeInstanceColumnConfig()
         ]
-        jsonColumnConfig = json.toPrettyString();
+        json.toPrettyString();
     }
 
 
@@ -173,4 +191,5 @@ class StatsModel {
 
         return d
     }
+
 }

@@ -48,7 +48,6 @@ class MonitorTabController {
     }
 
     void switchRollup(String value) {
-
         if (model.rollupMode != value) {
             model.rollupMode = value
 
