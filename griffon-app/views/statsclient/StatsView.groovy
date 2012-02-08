@@ -6,7 +6,7 @@ import javax.swing.WindowConstants
 import net.miginfocom.swing.MigLayout
 
 frame(id: 'statsFrame',
-        title: 'GriffonStats',
+        title: app.config.application.title,
         layout: new BorderLayout(),
         preferredSize: [1024, 1000],
         pack: true,
@@ -23,12 +23,14 @@ frame(id: 'statsFrame',
 
 
     panel(constraints: "North") {
-        label('Application Name')
+        label('Service Name')
     }
 
     panel(layout: new BorderLayout(), constraints: "Center") {
         panel(layout: new MigLayout(), constraints: "North") {
-            table(id: 'serviceLevelTable', constraints: 'w 100%, h 100%', autoResizeMode: JTable.AUTO_RESIZE_OFF) {
+            scrollPane(constraints: 'w 100%, h 60px') {
+                table(id: 'serviceLevelTable', constraints: 'w 100%, h 60px', autoResizeMode: JTable.AUTO_RESIZE_OFF) {
+                }
             }
         }
 

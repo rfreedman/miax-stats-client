@@ -19,6 +19,31 @@ class StatsController {
         mvcName = args.mvcName
 
         statsColumnConfig = dataService.getGlobalColumnConfig()
+
+        StatsTableModel statsTableModel = new StatsTableModel()  
+        statsTableModel.setAvailableColumnNames(statsColumnConfig.serviceColumns)
+        view.serviceLevelTable.model = new StatsTableSorter(statsTableModel)
+
+
+        // todo - hook this up to data from the model
+        def fakeDataRow = []
+        statsColumnConfig.serviceColumns.each { name ->
+            fakeDataRow << 0
+        }
+        statsTableModel.onUpdate([fakeDataRow])
+
+
+        //view.serviceLevelTable.model.addMouseListenerToHeaderInTable(view.serviceLevelTable)
+        //setDefaultColumnWidths(viewTable)
+        //this.model.subscribe(dataView, statsTableModel)
+        
+        
+        
+        
+
+
+
+
         dataService.getTabNames().each(createStatsTab)
 
         view.documents.selectedIndex = 0

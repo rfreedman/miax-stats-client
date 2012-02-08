@@ -72,33 +72,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MonitorTabController.groovy" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/griffon-app/controllers/statsclient/MonitorTabController.groovy">
+      <file leaf-file-name="StatsTableSorter.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/griffon-app/models/statsclient/StatsTableSorter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="38" selection-start="1277" selection-end="1277" vertical-scroll-proportion="-15.576923">
+            <state line="64" column="44" selection-start="2299" selection-end="2299" vertical-scroll-proportion="0.92715234">
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MonitorTabModel.groovy" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/griffon-app/models/statsclient/MonitorTabModel.groovy">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="74" column="16" selection-start="1881" selection-end="1881" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#21#49#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StatsTableModel.groovy" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/griffon-app/models/statsclient/StatsTableModel.groovy">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="52" column="38" selection-start="1067" selection-end="1067" vertical-scroll-proportion="0.58550185">
-              <folding>
-                <element signature="e#21#64#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -120,18 +98,19 @@
         <option value="$PROJECT_DIR$/griffon-app/conf/webstart/applet.html" />
         <option value="$PROJECT_DIR$/application.properties" />
         <option value="$PROJECT_DIR$/griffon-app/conf/BuildConfig.groovy" />
-        <option value="$PROJECT_DIR$/griffon-app/models/statsclient/StatsTableSorter.java" />
-        <option value="$PROJECT_DIR$/griffon-app/conf/Application.groovy" />
         <option value="$PROJECT_DIR$/griffon-app/lifecycle/Initialize.groovy" />
         <option value="$PROJECT_DIR$/griffon-app/services/statsclient/DataService.groovy" />
-        <option value="$PROJECT_DIR$/griffon-app/views/statsclient/StatsView.groovy" />
         <option value="$PROJECT_DIR$/griffon-app/models/statsclient/MonitorTableModel.java" />
         <option value="$PROJECT_DIR$/griffon-app/models/statsclient/StatsModel.groovy" />
-        <option value="$PROJECT_DIR$/griffon-app/views/statsclient/MonitorTabView.groovy" />
-        <option value="$PROJECT_DIR$/griffon-app/controllers/statsclient/StatsController.groovy" />
         <option value="$PROJECT_DIR$/griffon-app/models/statsclient/MonitorTabModel.groovy" />
         <option value="$PROJECT_DIR$/griffon-app/controllers/statsclient/MonitorTabController.groovy" />
         <option value="$PROJECT_DIR$/griffon-app/models/statsclient/StatsTableModel.groovy" />
+        <option value="$PROJECT_DIR$/griffon-app/controllers/statsclient/StatsController.groovy" />
+        <option value="$PROJECT_DIR$/griffon-app/views/statsclient/MonitorTabView.groovy" />
+        <option value="$PROJECT_DIR$/griffon-app/views/statsclient/StatsView.groovy" />
+        <option value="$PROJECT_DIR$/griffon-app/views/statsclient/MainMenuView.groovy" />
+        <option value="$PROJECT_DIR$/griffon-app/conf/Application.groovy" />
+        <option value="$PROJECT_DIR$/griffon-app/models/statsclient/StatsTableSorter.java" />
       </list>
     </option>
   </component>
@@ -463,7 +442,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24048224" sideWeight="0.76634514" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39442658" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39442658" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Phing Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32905984" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -544,22 +523,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/griffon-app/views/statsclient/StatsView.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="31" selection-start="680" selection-end="680" vertical-scroll-proportion="0.29801324">
-          <folding>
-            <element signature="e#21#49#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/griffon-app/models/statsclient/StatsTableSorter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/griffon-app/models/statsclient/MainMenuModel.groovy">
       <provider selected="true" editor-type-id="text-editor">
         <state line="2" column="6" selection-start="27" selection-end="27" vertical-scroll-proportion="0.03311258">
@@ -574,13 +537,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/griffon-app/conf/Application.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="26" selection-start="40" selection-end="40" vertical-scroll-proportion="0.01655629">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/griffon-app/controllers/statsclient/MainMenuController.groovy">
       <provider selected="true" editor-type-id="text-editor">
         <state line="27" column="0" selection-start="663" selection-end="663" vertical-scroll-proportion="0.44701988">
@@ -588,62 +544,90 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/griffon-app/views/statsclient/MonitorTabView.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="152" selection-start="1279" selection-end="1279" vertical-scroll-proportion="0.3605948">
-          <folding>
-            <element signature="e#21#49#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/griffon-app/services/statsclient/DataService.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="114" column="8" selection-start="3688" selection-end="3688" vertical-scroll-proportion="0.33333334">
+        <state line="97" column="30" selection-start="3196" selection-end="3210" vertical-scroll-proportion="0.22304833">
           <folding>
             <element signature="e#21#51#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/griffon-app/models/statsclient/StatsModel.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="8" selection-start="161" selection-end="161" vertical-scroll-proportion="0.16556291">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/griffon-app/controllers/statsclient/StatsController.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="133" selection-start="772" selection-end="789" vertical-scroll-proportion="0.7379182">
-          <folding>
-            <element signature="e#21#51#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/griffon-app/models/statsclient/MonitorTabModel.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="16" selection-start="1881" selection-end="1881" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#21#49#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/griffon-app/controllers/statsclient/MonitorTabController.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="38" selection-start="1277" selection-end="1277" vertical-scroll-proportion="-15.576923">
+        <state line="37" column="0" selection-start="1118" selection-end="1505" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/griffon-app/models/statsclient/StatsModel.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="8" selection-start="161" selection-end="161" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/griffon-app/models/statsclient/MonitorTabModel.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="74" column="16" selection-start="1881" selection-end="1881" vertical-scroll-proportion="0.8364312">
+          <folding>
+            <element signature="e#21#49#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/griffon-app/views/statsclient/MonitorTabView.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="54" selection-start="537" selection-end="537" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#21#49#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/griffon-app/conf/Application.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="6" selection-start="81" selection-end="81" vertical-scroll-proportion="0.111524165">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/griffon-app/views/statsclient/MainMenuView.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="48" selection-start="109" selection-end="109" vertical-scroll-proportion="0.111524165">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/griffon-app/views/statsclient/StatsView.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="44" selection-start="189" selection-end="218" vertical-scroll-proportion="0.22304833">
+          <folding>
+            <element signature="e#21#49#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/griffon-app/controllers/statsclient/StatsController.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="0" selection-start="843" selection-end="843" vertical-scroll-proportion="0.6654275">
+          <folding>
+            <element signature="e#21#51#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/griffon-app/models/statsclient/StatsTableModel.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="38" selection-start="1067" selection-end="1067" vertical-scroll-proportion="0.58550185">
-          <folding>
-            <element signature="e#21#64#0" expanded="true" />
-          </folding>
+        <state line="12" column="31" selection-start="279" selection-end="302" vertical-scroll-proportion="0.1986755">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/griffon-app/models/statsclient/StatsTableSorter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="64" column="44" selection-start="2299" selection-end="2299" vertical-scroll-proportion="0.92715234">
+          <folding />
         </state>
       </provider>
     </entry>

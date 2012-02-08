@@ -1,5 +1,5 @@
 application {
-    title = 'GriffonStats'
+    title = 'MIAX Monitor'
     startupGroups = ['mainMenu']
 
     // Should Griffon exit when no Griffon created frames are showing?

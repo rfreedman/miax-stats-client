@@ -8,19 +8,13 @@ import javax.swing.JTable
 
 panel(id: 'root', layout: new MigLayout(), constraints: 'w 100%, h 100%') {
 
-
-    panel(layout: new MigLayout(), constraints: 'w 100%, h 100px') {
-        label('Service Level Rollup')
-    }
-
-
     splitPane(id: "splitter",
             constraints: 'newLine, w 100%, h 100%',
             orientation: JSplitPane.VERTICAL_SPLIT,
             resizeWeight: 0.5,
             oneTouchExpandable: true,
             continuousLayout: true,
-            border: lineBorder(color: Color.BLACK, thickness: 1)) {
+            border: lineBorder(color: Color.LIGHT_GRAY, thickness: 1)) {
 
 
         panel(layout: new MigLayout(), constraints: 'w 100%, h 100%') {

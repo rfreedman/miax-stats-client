@@ -2,7 +2,7 @@ package statsclient
 
 import net.miginfocom.swing.MigLayout;
 
-application(title: 'GriffonStats',
+application(title: app.config.application.title,
   preferredSize: [320, 240],
   layout: new MigLayout(),
   pack: true,

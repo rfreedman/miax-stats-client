@@ -61,5 +61,7 @@ public class StatsTableSorter extends TableSorter {
 
        // re-apply the current sort
        reSort();
+
+       // re-apply the row selection, if any
     }
 }

@@ -1,51 +1,12 @@
 package statsclient
 
 import javax.swing.table.AbstractTableModel
-import groovy.util.logging.Log
 
-@Log
 class StatsTableModel extends AbstractTableModel {
 
-    def random = new Random(new Date().getTime())
-    def columnNames = [] // todo - filter
+    def columnNames = ["unset"] // todo - filter
 
     def data = []
-
-
-    /*
-    final int COL_COUNT = 25;
-    final int ROW_COUNT = 300;
-
-
-    public StatsTableModel() {
-        for(int n = 0; n < COL_COUNT; n++) {
-            columnNames.push("Col${n}")
-            data = buildModel()
-        }
-    }
-
-
-    def buildModel = {
-        def d = []
-
-        for(int i = 0; i < ROW_COUNT; i++) {
-            def row = []
-            for(int j = 0; j < columnNames.size(); j++) {
-                row.push(random.nextInt(101))
-            }
-            d.push(row)
-        }
-
-        return d
-    }
-
-
-    def update = {
-        data = buildModel()
-        fireTableDataChanged()
-    }
-    */   
-    
     
     // the names of all of the available columns, in order
     // todo - filter
