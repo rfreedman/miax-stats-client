@@ -21,12 +21,13 @@ class MonitorTabController {
         setupTable(view.firmTable, statsColumnConfig.firmColumns, MonitorTabModel.StatsDataView.FIRM, [0])
         setupTable(view.firmDetailTable, statsColumnConfig.instanceColumns, MonitorTabModel.StatsDataView.INSTANCE, [0, 1, 2])
         setupMasterDetailFiltering(view.firmTable, view.firmDetailTable, 0, 1)
+        setInitialTableSort(view.firmTable, 0)
 
         // cloud-tab tables
         setupTable(view.cloudTable, statsColumnConfig.cloudColumns, MonitorTabModel.StatsDataView.FIRM, [0])
         setupTable(view.cloudDetailTable, statsColumnConfig.instanceColumns, MonitorTabModel.StatsDataView.INSTANCE, [0, 1, 2])
         setupMasterDetailFiltering(view.cloudTable, view.cloudDetailTable, 0, 0)
-
+        setInitialTableSort(view.cloudTable, 0)
 
         statsModel.subscribe(this.model) // subscribe the tab model to the global stats model for this window
     }
@@ -54,6 +55,15 @@ class MonitorTabController {
         sorter.setRowFilter(new TableRowFilter(masterTable, detailTable, selectionColumn, filterColumn))
     }
 
+    def setInitialTableSort = { table, column ->
+        def rowSorter = table.getRowSorter()
+        if(rowSorter == null) {
+            rowSorter = new TableRowSorter<TableModel>(table.model);
+            table.setRowSorter(rowSorter)
+        }
+        rowSorter.toggleSortOrder(column)
+    }
+    
     // todo: currently fixed width - either use preferred size of header, or a configured value
     def setDefaultColumnWidths = { table ->
         TableColumnModel columns = table.getColumnModel();
