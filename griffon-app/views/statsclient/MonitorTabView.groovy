@@ -14,7 +14,7 @@ panel(id: 'root', layout: new MigLayout(), constraints: 'w 100%, h 100%') {
         splitPane(id: "Cloud",
                 constraints: 'newLine, w 100%, h 100%',
                 orientation: JSplitPane.VERTICAL_SPLIT,
-                resizeWeight: 0.5,
+                resizeWeight: 0.75,
                 oneTouchExpandable: true,
                 continuousLayout: true,
                 border: lineBorder(color: Color.LIGHT_GRAY, thickness: 1)) {
@@ -38,7 +38,7 @@ panel(id: 'root', layout: new MigLayout(), constraints: 'w 100%, h 100%') {
         splitPane(id: "Firm",
                 constraints: 'newLine, w 100%, h 100%',
                 orientation: JSplitPane.VERTICAL_SPLIT,
-                resizeWeight: 0.5,
+                resizeWeight: 0.75,
                 oneTouchExpandable: true,
                 continuousLayout: true,
                 border: lineBorder(color: Color.LIGHT_GRAY, thickness: 1)) {
