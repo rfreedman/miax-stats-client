@@ -8,14 +8,25 @@ class StatsTableModel extends AbstractTableModel {
 
     def data = []
     
+    def beforeChangeListeners = []
+    
     // the names of all of the available columns, in order
     // todo - filter
     def setAvailableColumnNames = { columnNames ->
         this.columnNames = columnNames
     }
-    
+
+    def registerBeforeChangeListener = { listener ->
+        beforeChangeListeners << listener
+    }
+
     def onUpdate = { data ->
-         this.data = data
+
+        beforeChangeListeners.each {listener ->
+            listener.beforeTableChanged()
+        }
+
+        this.data = data
         fireTableDataChanged()
     }
     

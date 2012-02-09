@@ -2,6 +2,7 @@ package statsclient
 
 import javax.swing.table.TableColumnModel
 import groovy.util.logging.Log
+import javax.swing.ListSelectionModel
 
 @Log
 class MonitorTabController {
@@ -15,15 +16,15 @@ class MonitorTabController {
         statsColumnConfig = args.statsColumnConfig
         
         // todo - the service-level and cloud-level tables
-        setupTable(view.statsTable, statsColumnConfig.firmColumns, MonitorTabModel.StatsDataView.FIRM)
-        setupTable(view.detailTable, statsColumnConfig.instanceColumns, MonitorTabModel.StatsDataView.INSTANCE)
+        setupTable(view.statsTable, statsColumnConfig.firmColumns, MonitorTabModel.StatsDataView.FIRM, [0])
+        setupTable(view.detailTable, statsColumnConfig.instanceColumns, MonitorTabModel.StatsDataView.INSTANCE, [0, 1, 2])
 
         view.rbFirm.actionPerformed = { evt ->
-            //switchRollup(MonitorTabModel.StatsDataView.FIRM)
+            switchRollup(MonitorTabModel.StatsDataView.FIRM)
         };
 
         view.rbCloud.actionPerformed = { evt ->
-            //switchRollup(MonitorTabModel.StatsDataView.CLOUD)
+            switchRollup(MonitorTabModel.StatsDataView.CLOUD)
         };
 
 
@@ -34,13 +35,17 @@ class MonitorTabController {
         // this method is called when the group is destroyed
     }
     
-    def setupTable = {viewTable, columnConfig, dataView ->
+    def setupTable = {viewTable, columnConfig, dataView, keys ->
         StatsTableModel statsTableModel = new StatsTableModel()
-        statsTableModel.setAvailableColumnNames(columnConfig) //statsColumnConfig.firmColumns)
+        statsTableModel.setAvailableColumnNames(columnConfig)
         viewTable.model = new StatsTableSorter(statsTableModel)
         viewTable.model.addMouseListenerToHeaderInTable(viewTable)
+        viewTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION)
         setDefaultColumnWidths(viewTable)
         this.model.subscribe(dataView, statsTableModel)
+
+        TableSelectionTracker selectionTracker = new TableSelectionTracker(viewTable, keys)
+        viewTable.model.selectionTracker = selectionTracker
     }
     
 
@@ -52,15 +57,14 @@ class MonitorTabController {
         }
     }
 
-/*
+
     void switchRollup(MonitorTabModel.StatsDataView value) {
         if (model.rollupMode != value) {
             model.rollupMode = value
 
             // todo - actually switch the mode
-            System.out.println("switched to ${model.rollupMode}")
+            String msg = "switched to ${model.rollupMode}"
+            System.out.println(msg)
         }
     }
-*/
-
 }

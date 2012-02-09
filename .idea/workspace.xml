@@ -72,11 +72,22 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="StatsTableSorter.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/griffon-app/models/statsclient/StatsTableSorter.java">
+      <file leaf-file-name="MonitorTabController.groovy" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/griffon-app/controllers/statsclient/MonitorTabController.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="64" column="44" selection-start="2299" selection-end="2299" vertical-scroll-proportion="0.92715234">
+            <state line="22" column="12" selection-start="707" selection-end="707" vertical-scroll-proportion="-0.15044248">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StatsTableSorter.groovy" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/griffon-app/models/statsclient/StatsTableSorter.groovy">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="74" column="0" selection-start="2577" selection-end="2577" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#21#62#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -95,22 +106,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/griffon-app/conf/webstart/applet.html" />
-        <option value="$PROJECT_DIR$/application.properties" />
-        <option value="$PROJECT_DIR$/griffon-app/conf/BuildConfig.groovy" />
         <option value="$PROJECT_DIR$/griffon-app/lifecycle/Initialize.groovy" />
         <option value="$PROJECT_DIR$/griffon-app/services/statsclient/DataService.groovy" />
         <option value="$PROJECT_DIR$/griffon-app/models/statsclient/MonitorTableModel.java" />
         <option value="$PROJECT_DIR$/griffon-app/models/statsclient/StatsModel.groovy" />
         <option value="$PROJECT_DIR$/griffon-app/models/statsclient/MonitorTabModel.groovy" />
-        <option value="$PROJECT_DIR$/griffon-app/controllers/statsclient/MonitorTabController.groovy" />
-        <option value="$PROJECT_DIR$/griffon-app/models/statsclient/StatsTableModel.groovy" />
         <option value="$PROJECT_DIR$/griffon-app/controllers/statsclient/StatsController.groovy" />
         <option value="$PROJECT_DIR$/griffon-app/views/statsclient/MonitorTabView.groovy" />
         <option value="$PROJECT_DIR$/griffon-app/views/statsclient/StatsView.groovy" />
         <option value="$PROJECT_DIR$/griffon-app/views/statsclient/MainMenuView.groovy" />
         <option value="$PROJECT_DIR$/griffon-app/conf/Application.groovy" />
+        <option value="$PROJECT_DIR$/griffon-app/models/statsclient/StatsTableModel.groovy" />
         <option value="$PROJECT_DIR$/griffon-app/models/statsclient/StatsTableSorter.java" />
+        <option value="$PROJECT_DIR$/griffon-app/models/statsclient/JStatsTableSorter.java" />
+        <option value="$PROJECT_DIR$/griffon-app/models/statsclient/StatsTableSorter.groovy" />
+        <option value="$PROJECT_DIR$/griffon-app/views/statsclient/TableSelectionTracker.groovy" />
+        <option value="$PROJECT_DIR$/griffon-app/controllers/statsclient/MonitorTabController.groovy" />
       </list>
     </option>
   </component>
@@ -122,8 +133,8 @@
     <option name="LAST_EDITED_TAB_NAME" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="4" />
-    <option name="y" value="23" />
+    <option name="x" value="7" />
+    <option name="y" value="22" />
     <option name="width" value="1624" />
     <option name="height" value="1028" />
   </component>
@@ -143,7 +154,7 @@
     <option name="STATE" value="0" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
+    <navigator proportions="" version="1" splitterProportion="0.5">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -155,83 +166,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane">
-        <subPane />
-      </pane>
-      <pane id="Scope">
-        <subPane subId="Non-Project Files" />
-        <subPane subId="Changed Files" />
-        <subPane subId="All">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="StatsClient" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="StatsClient" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="StatsClient" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="StatsClient" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="StatsClient" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="griffon-app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="StatsClient" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="StatsClient" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="griffon-app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lifecycle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="StatsClient" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="Favorites" />
     </panes>
   </component>
@@ -422,13 +356,12 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="4" y="23" width="1624" height="1028" extended-state="0" />
+    <frame x="7" y="22" width="1624" height="1028" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290461" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -436,18 +369,19 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24048224" sideWeight="0.33547696" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Griffon View" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17512691" sideWeight="0.6055734" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Griffon View" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17766498" sideWeight="0.75562704" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24048224" sideWeight="0.3301179" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24048224" sideWeight="0.76634514" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39442658" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.244373" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Phing Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32905984" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290461" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290461" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290461" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -509,108 +443,77 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/griffon-app/conf/BuildConfig.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-3.0445545">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/griffon-app/lifecycle/Initialize.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="0" selection-start="429" selection-end="429" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/griffon-app/models/statsclient/MainMenuModel.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="6" selection-start="27" selection-end="27" vertical-scroll-proportion="0.03311258">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/griffon-app/conf/Config.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/griffon-app/controllers/statsclient/MainMenuController.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="0" selection-start="663" selection-end="663" vertical-scroll-proportion="0.44701988">
-          <folding />
-        </state>
+        <state line="27" column="0" selection-start="663" selection-end="663" vertical-scroll-proportion="0.44701988" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/griffon-app/services/statsclient/DataService.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="97" column="30" selection-start="3196" selection-end="3210" vertical-scroll-proportion="0.22304833">
-          <folding>
-            <element signature="e#21#51#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/griffon-app/controllers/statsclient/MonitorTabController.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="0" selection-start="1118" selection-end="1505" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="97" column="30" selection-start="3196" selection-end="3210" vertical-scroll-proportion="0.22304833" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/griffon-app/models/statsclient/StatsModel.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="8" selection-start="161" selection-end="161" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="10" column="8" selection-start="161" selection-end="161" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/griffon-app/models/statsclient/MonitorTabModel.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="16" selection-start="1881" selection-end="1881" vertical-scroll-proportion="0.8364312">
-          <folding>
-            <element signature="e#21#49#0" expanded="true" />
-          </folding>
-        </state>
+        <state line="74" column="16" selection-start="1881" selection-end="1881" vertical-scroll-proportion="0.8364312" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/griffon-app/views/statsclient/MonitorTabView.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="54" selection-start="537" selection-end="537" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#21#49#0" expanded="true" />
-          </folding>
-        </state>
+        <state line="16" column="54" selection-start="537" selection-end="537" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/griffon-app/conf/Application.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="6" selection-start="81" selection-end="81" vertical-scroll-proportion="0.111524165">
-          <folding />
-        </state>
+        <state line="4" column="6" selection-start="81" selection-end="81" vertical-scroll-proportion="0.111524165" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/griffon-app/views/statsclient/MainMenuView.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="48" selection-start="109" selection-end="109" vertical-scroll-proportion="0.111524165">
-          <folding />
-        </state>
+        <state line="4" column="48" selection-start="109" selection-end="109" vertical-scroll-proportion="0.111524165" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/griffon-app/views/statsclient/StatsView.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="44" selection-start="189" selection-end="218" vertical-scroll-proportion="0.22304833">
-          <folding>
-            <element signature="e#21#49#0" expanded="true" />
-          </folding>
-        </state>
+        <state line="8" column="44" selection-start="189" selection-end="218" vertical-scroll-proportion="0.22304833" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/griffon-app/controllers/statsclient/StatsController.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="0" selection-start="843" selection-end="843" vertical-scroll-proportion="0.6654275">
+        <state line="32" column="0" selection-start="843" selection-end="843" vertical-scroll-proportion="0.6654275" />
+      </provider>
+    </entry>
+    <entry file="jar:///Applications/griffon-0.9.4/lib/groovy-all-1.8.2.jar!/groovy/inspect/swingui/TableMap.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="13" selection-start="160" selection-end="160" vertical-scroll-proportion="0.06810442">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Applications/griffon-0.9.4/lib/groovy-all-1.8.2.jar!/groovy/inspect/swingui/TableSorter.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="59" selection-start="206" selection-end="206" vertical-scroll-proportion="0.06356413">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/griffon-app/models/statsclient/StatsTableSorter.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="74" column="0" selection-start="2577" selection-end="2577" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#21#62#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/griffon-app/views/statsclient/TableSelectionTracker.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="13" selection-start="848" selection-end="848" vertical-scroll-proportion="0.49115044">
           <folding>
             <element signature="e#21#51#0" expanded="true" />
           </folding>
@@ -619,14 +522,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/griffon-app/models/statsclient/StatsTableModel.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="31" selection-start="279" selection-end="302" vertical-scroll-proportion="0.1986755">
+        <state line="21" column="0" selection-start="509" selection-end="509" vertical-scroll-proportion="0.46460176">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/griffon-app/models/statsclient/StatsTableSorter.java">
+    <entry file="file://$PROJECT_DIR$/griffon-app/controllers/statsclient/MonitorTabController.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="44" selection-start="2299" selection-end="2299" vertical-scroll-proportion="0.92715234">
+        <state line="22" column="12" selection-start="707" selection-end="707" vertical-scroll-proportion="-0.15044248">
           <folding />
         </state>
       </provider>
