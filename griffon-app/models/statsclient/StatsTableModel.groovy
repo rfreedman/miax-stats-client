@@ -1,7 +1,9 @@
 package statsclient
 
 import javax.swing.table.AbstractTableModel
+import groovy.util.logging.Log
 
+@Log
 class StatsTableModel extends AbstractTableModel {
 
     def columnNames = ["unset"] // todo - filter
@@ -31,26 +33,27 @@ class StatsTableModel extends AbstractTableModel {
     }
     
     int getRowCount() {
-        return data.size()
+        return data == null ? 0 : data.size()
     }
 
     int getColumnCount() {
-        return columnNames.size()
+        return columnNames == null ? 0 : columnNames.size()
     }
 
 
     Object getValueAt(int row, int col) {
-        return data[row][col]
+        return data == null ? null : data[row][col]
     }
 
     public String getColumnName(int col) {
-        return columnNames[col];
+        return columnNames == null ? null : columnNames[col];
     }
 
     public Class getColumnClass(int column) {
         Class returnValue;
-        if ((column >= 0) && (column < getColumnCount())) {
-            returnValue = getValueAt(0, column).getClass();
+        if ((column >= 0) && (column < getColumnCount() && data != null && data.size() > 0)) {
+            def value = getValueAt(0, column)
+            returnValue = value == null ? Object.class : value.getClass()
         } else {
             returnValue = Object.class;
         }

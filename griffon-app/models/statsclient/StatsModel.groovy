@@ -1,6 +1,7 @@
 package statsclient
 
 import groovy.util.logging.Log
+import java.util.logging.Level
 
 @Log
 class StatsModel {
@@ -19,7 +20,11 @@ class StatsModel {
     def onUpdate = { data ->
         statsData = data
         subscribers.each {subscriber ->
-            subscriber.onUpdate(data)
+            try{
+                subscriber.onUpdate(data)
+            } catch(Exception ex) {
+                log.log(Level.WARNING, "error while notifying subscriber", ex)
+            }
         }
     }
 }

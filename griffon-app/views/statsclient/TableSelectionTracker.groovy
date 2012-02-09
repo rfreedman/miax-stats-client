@@ -31,11 +31,6 @@ class TableSelectionTracker { // implements ListSelectionListener {
 
 
     public void reselect() {
-        if (lastSelectedCompoundKey != null) {
-            String msg = "reselecting key ${lastSelectedCompoundKey}"
-            log.info(msg)
-        }
-
 
         if (lastSelectedCompoundKey != null) {
             // find the previously selected row by its compound key

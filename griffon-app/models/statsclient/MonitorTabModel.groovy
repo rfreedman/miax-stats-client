@@ -2,6 +2,7 @@ package statsclient
 
 import groovy.beans.Bindable
 import groovy.util.logging.Log
+import java.util.logging.Level
 
 @Log
 class MonitorTabModel {
@@ -73,7 +74,11 @@ class MonitorTabModel {
                 def subset = dataView.getData(statsData)
 
                 subscriberList.each {subscriber ->
-                    subscriber.onUpdate(subset)
+                    try {
+                        subscriber.onUpdate(subset)
+                    } catch(Exception ex) {
+                        log.log(Level.WARNING, "error updating subscriber from onUpdate", ex)
+                    }
                 }
             }
         }

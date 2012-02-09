@@ -3,6 +3,8 @@ package statsclient
 import javax.swing.table.TableColumnModel
 import groovy.util.logging.Log
 import javax.swing.ListSelectionModel
+import javax.swing.table.TableModel
+import javax.swing.table.TableRowSorter
 
 @Log
 class MonitorTabController {
@@ -18,10 +20,13 @@ class MonitorTabController {
         // firm-tab tables
         setupTable(view.firmTable, statsColumnConfig.firmColumns, MonitorTabModel.StatsDataView.FIRM, [0])
         setupTable(view.firmDetailTable, statsColumnConfig.instanceColumns, MonitorTabModel.StatsDataView.INSTANCE, [0, 1, 2])
+        setupMasterDetailFiltering(view.firmTable, view.firmDetailTable, 0, 1)
 
         // cloud-tab tables
         setupTable(view.cloudTable, statsColumnConfig.cloudColumns, MonitorTabModel.StatsDataView.FIRM, [0])
         setupTable(view.cloudDetailTable, statsColumnConfig.instanceColumns, MonitorTabModel.StatsDataView.INSTANCE, [0, 1, 2])
+        setupMasterDetailFiltering(view.cloudTable, view.cloudDetailTable, 0, 0)
+
 
         statsModel.subscribe(this.model) // subscribe the tab model to the global stats model for this window
     }
@@ -42,7 +47,12 @@ class MonitorTabController {
         TableSelectionTracker selectionTracker = new TableSelectionTracker(viewTable, keys)
         viewTable.model.selectionTracker = selectionTracker
     }
-    
+
+    def setupMasterDetailFiltering = { masterTable, detailTable, selectionColumn, filterColumn ->
+        TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(detailTable.model);
+        detailTable.setRowSorter(sorter);
+        sorter.setRowFilter(new TableRowFilter(masterTable, detailTable, selectionColumn, filterColumn))
+    }
 
     // todo: currently fixed width - either use preferred size of header, or a configured value
     def setDefaultColumnWidths = { table ->
