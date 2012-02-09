@@ -2,6 +2,8 @@ package statsclient
 
 import groovy.util.logging.Log
 import griffon.core.MVCGroup
+import javax.swing.ListSelectionModel
+import javax.swing.table.TableColumnModel
 
 @Log
 class StatsController {
@@ -20,35 +22,32 @@ class StatsController {
 
         statsColumnConfig = dataService.getGlobalColumnConfig()
 
-        StatsTableModel statsTableModel = new StatsTableModel()  
-        statsTableModel.setAvailableColumnNames(statsColumnConfig.serviceColumns)
-        view.serviceLevelTable.model = new StatsTableSorter(statsTableModel)
-
-
-        // todo - hook this up to data from the model
-        def fakeDataRow = []
-        statsColumnConfig.serviceColumns.each { name ->
-            fakeDataRow << 0
-        }
-        statsTableModel.onUpdate([fakeDataRow])
-
-
-        //view.serviceLevelTable.model.addMouseListenerToHeaderInTable(view.serviceLevelTable)
-        //setDefaultColumnWidths(viewTable)
-        //this.model.subscribe(dataView, statsTableModel)
-        
-        
-        
-        
-
-
-
+        setupTable(view.serviceLevelTable, statsColumnConfig.serviceColumns, MonitorTabModel.StatsDataView.SERVICE )
 
         dataService.getTabNames().each(createStatsTab)
 
         view.documents.selectedIndex = 0
 
         dataService.subscribe(model.onUpdate)
+    }
+
+    def setupTable = {viewTable, columnConfig, dataView  ->
+        StatsTableModel statsTableModel = new StatsTableModel()
+        statsTableModel.setAvailableColumnNames(columnConfig)
+        viewTable.model = new StatsTableSorter(statsTableModel)
+        viewTable.model.addMouseListenerToHeaderInTable(viewTable)
+        viewTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION)
+        setDefaultColumnWidths(viewTable)
+        this.model.subscribeToServiceData(statsTableModel)
+    }
+
+
+    // todo: currently fixed width - either use preferred size of header, or a configured value
+    def setDefaultColumnWidths = { table ->
+        TableColumnModel columns = table.getColumnModel();
+        columns.each {column ->
+            column.preferredWidth = 50
+        }
     }
 
     def createStatsTab = { statName ->

@@ -1,7 +1,7 @@
 package statsclient
 
-import groovy.json.JsonSlurper
 import groovy.json.JsonBuilder
+import groovy.json.JsonSlurper
 import groovy.util.logging.Log
 
 // TODO - make this handle multiple subscriptions, to support multiple windows open for the same or different services
@@ -14,10 +14,8 @@ class DataService {
     // the names of the tabs - for now, this maps to the individual statistics types - one tab per stat
     // later, we may support custom tabs
     def getTabNames = {
-       def tabNamesJson = getTabNamesJson()
-       def tabNames = new JsonSlurper().parseText(tabNamesJson).tabNames
-       log.info("tabNamesJson: ${tabNamesJson}, tabNames: ${tabNames}")
-       return tabNames
+        def tabNamesJson = getTabNamesJson()
+        new JsonSlurper().parseText(tabNamesJson).tabNames
     }
 
     // the names of the all of the columns for each rollup type
@@ -50,6 +48,7 @@ class DataService {
     def subscribe = { closure ->
         this.dataCallbackClosure = closure
         fakeSubscribeImpl()
+        log.info("after subscribe")
     }
 
     def unsubscribe = {
@@ -66,15 +65,15 @@ class DataService {
     class FakeModelUpdateTimerTask extends TimerTask {
         @Override
         void run() {
-           def jsonData = generateFakeData()
-           def data = new JsonSlurper().parseText(jsonData).data
-           dataCallbackClosure(data)
+            def jsonData = generateFakeData()
+            def data = new JsonSlurper().parseText(jsonData).data
+            dataCallbackClosure(data)
         }
     }
 
     def fakeSubscribeImpl = {
         // in the real implementation, we would use CometD to subscribe to a Bayeux Channel
-        fakeTimer.scheduleAtFixedRate(timerTask, 2000, 2000)
+        fakeTimer.scheduleAtFixedRate(timerTask, 0, 2000)
     }
 
     def fakeUnsubscribeImpl = {
