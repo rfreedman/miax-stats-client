@@ -24,7 +24,7 @@ class MonitorTabController {
         setInitialTableSort(view.firmTable, 0)
 
         // cloud-tab tables
-        setupTable(view.cloudTable, statsColumnConfig.cloudColumns, MonitorTabModel.StatsDataView.FIRM, [0])
+        setupTable(view.cloudTable, statsColumnConfig.cloudColumns, MonitorTabModel.StatsDataView.CLOUD, [0])
         setupTable(view.cloudDetailTable, statsColumnConfig.instanceColumns, MonitorTabModel.StatsDataView.INSTANCE, [0, 1, 2])
         setupMasterDetailFiltering(view.cloudTable, view.cloudDetailTable, 0, 0)
         setInitialTableSort(view.cloudTable, 0)
