@@ -15,7 +15,7 @@ class MonitorTabController {
         def statsModel = args.statsModel
         statsColumnConfig = args.statsColumnConfig
         
-        // todo - the service-level and cloud-level tables
+        // todo - the cloud-level table
         setupTable(view.statsTable, statsColumnConfig.firmColumns, MonitorTabModel.StatsDataView.FIRM, [0])
         setupTable(view.detailTable, statsColumnConfig.instanceColumns, MonitorTabModel.StatsDataView.INSTANCE, [0, 1, 2])
 

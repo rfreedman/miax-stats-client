@@ -22,7 +22,7 @@ class StatsController {
 
         StatsTableModel statsTableModel = new StatsTableModel()  
         statsTableModel.setAvailableColumnNames(statsColumnConfig.serviceColumns)
-        view.serviceLevelTable.model = new JStatsTableSorter(statsTableModel)
+        view.serviceLevelTable.model = new StatsTableSorter(statsTableModel)
 
 
         // todo - hook this up to data from the model
