@@ -6,7 +6,7 @@ import groovy.util.logging.Log
 @Log
 class StatsTableModel extends AbstractTableModel {
     def allColumnNames = []
-    def columnNames = [] // todo - filter
+    def columnNames = []
     def columnMap = []
     
     def data = []
@@ -17,6 +17,7 @@ class StatsTableModel extends AbstractTableModel {
     def setAvailableColumnNames = { columnNames ->
         allColumnNames = columnNames
         this.columnNames = allColumnNames // default to showing all columns
+        buildDefaultColumnMap()
     }
 
     // the columns that will actually be shown
@@ -51,13 +52,12 @@ class StatsTableModel extends AbstractTableModel {
     }
 
 
+    /* warning - this gets called frequently during table updates,
+     * so it must execute as quickly as possible,
+     * so as not to slow down update of the UI
+     */
     Object getValueAt(int row, int col) {
-        if(data == null) {
-            return null
-        }
-        def dataColumn = convertShownColumnIndexToAllColumnsIndex(col)
-        return data[row][dataColumn]
-        
+        data[row][columnMap[col]]
     }
 
     public String getColumnName(int col) {
@@ -75,7 +75,15 @@ class StatsTableModel extends AbstractTableModel {
         return returnValue;
     }
 
+    def buildDefaultColumnMap = {
+        columnMap = []
+        columnNames.eachWithIndex { name, index ->
+            columnMap << index
+        }
+    }
+
     def buildColumnMap = {
+        columnMap = []
        columnNames.each { shownColumn ->
            def allColumnsIndex = allColumnNames.findIndexOf{name -> name == shownColumn}
            if(allColumnsIndex < 0) {
@@ -83,10 +91,6 @@ class StatsTableModel extends AbstractTableModel {
            }
            columnMap << allColumnsIndex
        }
-    }
-    
-    def convertShownColumnIndexToAllColumnsIndex = { shownColumnIndex ->
-        columnMap.empty ? shownColumnIndex : columnMap[shownColumnIndex]
     }
 }
 

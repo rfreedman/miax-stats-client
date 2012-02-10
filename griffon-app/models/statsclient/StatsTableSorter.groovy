@@ -10,7 +10,6 @@ import javax.swing.table.JTableHeader
 import javax.swing.event.TableModelEvent
 
 class StatsTableSorter extends TableSorter {
-
     boolean ascending = true;
     int lastSortedColumn = -1;
     final TableSorter sorter = this;
@@ -52,26 +51,18 @@ class StatsTableSorter extends TableSorter {
         th.addMouseListener(listMouseListener);
     }
 
-    public void reSort() {
-        sorter.sortByColumn(lastSortedColumn, ascending);
-    }
 
     public void tableChanged(TableModelEvent e) {
-        //super.tableChanged(e);
 
         // bypass super.tableChanged because it prints annoying stuff to the console
         // see http://jira.codehaus.org/browse/GROOVY-5270 - should be fixed for 1.8.6 and 2.0-beta-3
         reallocateIndexes();
-        fireTableChanged(e);
 
-        // re-apply the current sort
-        reSort();
+        fireTableChanged(e);
 
         // re-apply the row selection, if any
         if(selectionTracker != null) {
             selectionTracker.reselect();
         }
     }
-
-
 }

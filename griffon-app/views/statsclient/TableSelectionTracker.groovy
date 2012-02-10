@@ -2,9 +2,10 @@ package statsclient
 
 import groovy.util.logging.Log
 import javax.swing.JTable
+import javax.swing.RepaintManager
 
 @Log
-class TableSelectionTracker { // implements ListSelectionListener {
+class TableSelectionTracker {
 
     JTable table;
     java.util.List<Integer> keys
@@ -17,15 +18,17 @@ class TableSelectionTracker { // implements ListSelectionListener {
     }
 
     def beforeTableChanged = {
+
         def selectedViewRowIndex = table.getSelectedRow()
 
         if (selectedViewRowIndex > -1) {
             def selectedModelRowIndex = table.convertRowIndexToModel(selectedViewRowIndex)
 
-            lastSelectedCompoundKey = ""
+            StringBuilder buff = new StringBuilder()
             keys.each {key ->
-                lastSelectedCompoundKey += "|" + table.model.getValueAt(selectedModelRowIndex, key)
+                buff.append("|").append(table.model.getValueAt(selectedModelRowIndex, key))
             }
+            lastSelectedCompoundKey = buff.toString()
         }
     }
 
@@ -33,17 +36,19 @@ class TableSelectionTracker { // implements ListSelectionListener {
     public void reselect() {
 
         if (lastSelectedCompoundKey != null) {
+
             // find the previously selected row by its compound key
             def selectedModelRowIndex = -1
 
             for (i in 0..(table.model.rowCount - 1)) {
-                def compoundKey = ""
+
+                StringBuilder buff = new StringBuilder()
                 keys.each {key ->
-                    compoundKey += "|" + table.model.getValueAt(i, key)
+                    buff.append("|").append(table.model.getValueAt(i, key))
                 }
-                if (compoundKey == lastSelectedCompoundKey) {
+                if(buff.toString() == lastSelectedCompoundKey) {
                     selectedModelRowIndex = i
-                    break;
+                    break
                 }
             }
 
@@ -52,6 +57,5 @@ class TableSelectionTracker { // implements ListSelectionListener {
                 table.getSelectionModel().setSelectionInterval(selectedViewRowIndex, selectedViewRowIndex)
             }
         }
-
     }
 }

@@ -11,6 +11,8 @@ import static statsclient.MonitorTabModel.StatsDataView.*
 @Log
 class DataService {
 
+    static final boolean fakeRandom = true
+
     def dataCallbackClosure
 
     // the names of the tabs - for now, this maps to the individual statistics types - one tab per stat
@@ -203,7 +205,9 @@ class DataService {
             def row = []
             for (int j = 0; j < COL_COUNT; j++) {
                 //row.push(random.nextInt(101))
-                row.push(j)
+                //row.push(j)
+                
+                row.push fakeRandom ? random.nextInt(101) : j
             }
             d.push(row)
         }
@@ -220,7 +224,9 @@ class DataService {
             def row = [i]
             for (int j = 0; j < COL_COUNT; j++) {
                 //row.push(random.nextInt(101))
-                row.push(j)
+                //row.push(j)
+
+                row.push fakeRandom ? random.nextInt(101) : j
             }
             d.push(row)
         }
@@ -237,7 +243,8 @@ class DataService {
             def row = [i]
             for (int j = 0; j < COL_COUNT; j++) {
                 //row.push(random.nextInt(101))
-                row.push(j)
+                //row.push(j)
+                row.push fakeRandom ? random.nextInt(101) : j
             }
             d.push(row)
         }
@@ -259,7 +266,8 @@ class DataService {
                     def row = [cloud, firm, instance]
                     for (int j = 0; j < COL_COUNT; j++) {
                        // row.push(random.nextInt(101))
-                       row.push(j)
+                       //row.push(j)
+                       row.push fakeRandom ? random.nextInt(101) : j
                     }
                     d.push(row)
                 }
