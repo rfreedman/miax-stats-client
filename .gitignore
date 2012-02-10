@@ -3,4 +3,4 @@
 staging
 dist
 out
-
+.DS_Store
