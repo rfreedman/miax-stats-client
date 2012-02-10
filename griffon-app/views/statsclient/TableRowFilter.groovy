@@ -48,9 +48,6 @@ class TableRowFilter extends RowFilter implements ListSelectionListener {
            def selectedViewRow = event.lastIndex
            def selectedModelRow = selectionTable.convertRowIndexToModel(selectedViewRow)
            currentFilterValue = selectionTable.model.getValueAt(selectedModelRow, selectionColumn)
-           
-          // println "valueChanged --> selected row in view = ${selectedViewRow}, selected row in model = ${selectedModelRow}, new filter value = ${currentFilterValue}"
-            
            filteredTable.model.fireTableDataChanged()
         }
     }

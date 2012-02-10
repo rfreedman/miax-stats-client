@@ -4,6 +4,7 @@ import groovy.util.logging.Log
 import griffon.core.MVCGroup
 import javax.swing.ListSelectionModel
 import javax.swing.table.TableColumnModel
+import static statsclient.MonitorTabModel.StatsDataView.*
 
 @Log
 class StatsController {
@@ -22,7 +23,7 @@ class StatsController {
 
         statsColumnConfig = dataService.getGlobalColumnConfig()
 
-        setupTable(view.serviceLevelTable, statsColumnConfig.serviceColumns, MonitorTabModel.StatsDataView.SERVICE )
+        setupTable(view.serviceLevelTable, statsColumnConfig.serviceColumns, SERVICE )
 
         dataService.getTabNames().each(createStatsTab)
 
@@ -34,6 +35,8 @@ class StatsController {
     def setupTable = {viewTable, columnConfig, dataView  ->
         StatsTableModel statsTableModel = new StatsTableModel()
         statsTableModel.setAvailableColumnNames(columnConfig)
+        statsTableModel.setShownColumns(dataService.getTableColumnConfig(null, dataView))
+
         viewTable.model = new StatsTableSorter(statsTableModel)
         viewTable.model.addMouseListenerToHeaderInTable(viewTable)
         viewTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION)

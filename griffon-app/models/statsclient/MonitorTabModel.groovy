@@ -77,7 +77,8 @@ class MonitorTabModel {
                     try {
                         subscriber.onUpdate(subset)
                     } catch(Exception ex) {
-                        log.log(Level.WARNING, "error updating subscriber from onUpdate", ex)
+                        //log.log(Level.WARNING, "error updating subscriber from onUpdate", ex)
+                        ex.printStackTrace()
                     }
                 }
             }

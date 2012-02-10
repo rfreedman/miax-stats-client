@@ -3,6 +3,8 @@ package statsclient
 import groovy.json.JsonBuilder
 import groovy.json.JsonSlurper
 import groovy.util.logging.Log
+import static statsclient.MonitorTabModel.StatsDataView.*
+
 
 // TODO - make this handle multiple subscriptions, to support multiple windows open for the same or different services
 // do this by having a collection of service-specific classes that have the functionality currently present in this class
@@ -25,6 +27,11 @@ class DataService {
         def jsonColumnConfig = generateFakeColumnConfig()
         def columnConfigs = new JsonSlurper().parseText(jsonColumnConfig).columnConfigs
         return columnConfigs
+    }
+
+    def getTableColumnConfig = { tabName, dataView ->
+        def jsonTableColumnConfig = generateFakeTableColumnConfig(tabName, dataView)
+        def tableColumnConfig = new JsonSlurper().parseText(jsonTableColumnConfig).tableColumnConfig
     }
 
     /*
@@ -102,6 +109,37 @@ class DataService {
         json.toPrettyString();
     }
 
+    def generateFakeTableColumnConfig = { tabName, dataView ->
+
+        def columns = []
+
+        switch(dataView) {
+            case SERVICE:
+                getGlobalColumnConfig().serviceColumns.eachWithIndex{ column, index ->
+                    if(index % 2 == 0 || index > 10) {
+                        columns << column
+                    }
+                }
+                break;
+
+            case CLOUD:
+                columns = getGlobalColumnConfig().cloudColumns
+                break;
+
+            case FIRM:
+                columns = getGlobalColumnConfig().firmColumns
+                break
+
+            case INSTANCE:
+                columns = getGlobalColumnConfig().instanceColumns
+                break
+        }
+
+        def json = new JsonBuilder()
+        json tableColumnConfig: columns
+        json.toPrettyString()
+    }
+
 
     def generateFakeServiceColumnConfig = {
         def columns = []
@@ -164,7 +202,8 @@ class DataService {
         for (int i = 0; i < rowCount; i++) {
             def row = []
             for (int j = 0; j < COL_COUNT; j++) {
-                row.push(random.nextInt(101))
+                //row.push(random.nextInt(101))
+                row.push(j)
             }
             d.push(row)
         }
@@ -180,7 +219,8 @@ class DataService {
         for (int i = 0; i < rowCount; i++) {
             def row = [i]
             for (int j = 0; j < COL_COUNT; j++) {
-                row.push(random.nextInt(101))
+                //row.push(random.nextInt(101))
+                row.push(j)
             }
             d.push(row)
         }
@@ -196,7 +236,8 @@ class DataService {
         for (int i = 0; i < rowCount; i++) {
             def row = [i]
             for (int j = 0; j < COL_COUNT; j++) {
-                row.push(random.nextInt(101))
+                //row.push(random.nextInt(101))
+                row.push(j)
             }
             d.push(row)
         }
@@ -217,7 +258,8 @@ class DataService {
                 for (int firm = 0; firm < firmsPerInstance; firm++) {
                     def row = [cloud, firm, instance]
                     for (int j = 0; j < COL_COUNT; j++) {
-                        row.push(random.nextInt(101))
+                       // row.push(random.nextInt(101))
+                       row.push(j)
                     }
                     d.push(row)
                 }

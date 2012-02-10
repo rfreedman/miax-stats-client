@@ -5,27 +5,31 @@ import groovy.util.logging.Log
 import javax.swing.ListSelectionModel
 import javax.swing.table.TableModel
 import javax.swing.table.TableRowSorter
+import static statsclient.MonitorTabModel.StatsDataView.*
 
 @Log
 class MonitorTabController {
     def model
     def view
+    def dataService
+    def tabName
     def statsColumnConfig
 
     void mvcGroupInit(Map args) {
+        tabName = args.id
 
         def statsModel = args.statsModel
         statsColumnConfig = args.statsColumnConfig
         
         // firm-tab tables
-        setupTable(view.firmTable, statsColumnConfig.firmColumns, MonitorTabModel.StatsDataView.FIRM, [0])
-        setupTable(view.firmDetailTable, statsColumnConfig.instanceColumns, MonitorTabModel.StatsDataView.INSTANCE, [0, 1, 2])
+        setupTable(view.firmTable, statsColumnConfig.firmColumns, FIRM, [0])
+        setupTable(view.firmDetailTable, statsColumnConfig.instanceColumns, INSTANCE, [0, 1, 2])
         setupMasterDetailFiltering(view.firmTable, view.firmDetailTable, 0, 1)
         setInitialTableSort(view.firmTable, 0)
 
         // cloud-tab tables
-        setupTable(view.cloudTable, statsColumnConfig.cloudColumns, MonitorTabModel.StatsDataView.CLOUD, [0])
-        setupTable(view.cloudDetailTable, statsColumnConfig.instanceColumns, MonitorTabModel.StatsDataView.INSTANCE, [0, 1, 2])
+        setupTable(view.cloudTable, statsColumnConfig.cloudColumns, CLOUD, [0])
+        setupTable(view.cloudDetailTable, statsColumnConfig.instanceColumns, INSTANCE, [0, 1, 2])
         setupMasterDetailFiltering(view.cloudTable, view.cloudDetailTable, 0, 0)
         setInitialTableSort(view.cloudTable, 0)
 
@@ -39,6 +43,8 @@ class MonitorTabController {
     def setupTable = {viewTable, columnConfig, dataView, keys ->
         StatsTableModel statsTableModel = new StatsTableModel()
         statsTableModel.setAvailableColumnNames(columnConfig)
+        statsTableModel.setShownColumns(dataService.getTableColumnConfig(tabName, dataView))
+
         viewTable.model = new StatsTableSorter(statsTableModel)
         viewTable.model.addMouseListenerToHeaderInTable(viewTable)
         viewTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION)

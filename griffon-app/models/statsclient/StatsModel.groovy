@@ -24,7 +24,8 @@ class StatsModel {
             try{
                 subscriber.onUpdate(data.serviceData)
             } catch(Exception ex) {
-                log.log(Level.WARNING, "error while notifying subscriber", ex)
+                //log.log(Level.WARNING, "error while notifying subscriber", ex)
+                ex.printStackTrace()
             }
         }
 
@@ -32,7 +33,8 @@ class StatsModel {
             try{
                 subscriber.onUpdate(data)
             } catch(Exception ex) {
-                log.log(Level.WARNING, "error while notifying subscriber", ex)
+                //log.log(Level.WARNING, "error while notifying subscriber", ex)
+                ex.printStackTrace()
             }
         }
     }
