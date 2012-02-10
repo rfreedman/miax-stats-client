@@ -11,7 +11,7 @@ import static statsclient.MonitorTabModel.StatsDataView.*
 @Log
 class DataService {
 
-    static final boolean fakeRandom = true
+    static final boolean fakeRandom = false
 
     def dataCallbackClosure
 
@@ -74,15 +74,19 @@ class DataService {
     class FakeModelUpdateTimerTask extends TimerTask {
         @Override
         void run() {
+            //log.info("start of task")
             def jsonData = generateFakeData()
+            //log.info("data generated")
             def data = new JsonSlurper().parseText(jsonData).data
+            //log.info("data parsed")
             dataCallbackClosure(data)
+            //log.info("notifications complete\n\n")
         }
     }
 
     def fakeSubscribeImpl = {
         // in the real implementation, we would use CometD to subscribe to a Bayeux Channel
-        fakeTimer.scheduleAtFixedRate(timerTask, 0, 2000)
+        fakeTimer.scheduleAtFixedRate(timerTask, 0, 500)
     }
 
     def fakeUnsubscribeImpl = {
@@ -204,9 +208,6 @@ class DataService {
         for (int i = 0; i < rowCount; i++) {
             def row = []
             for (int j = 0; j < COL_COUNT; j++) {
-                //row.push(random.nextInt(101))
-                //row.push(j)
-                
                 row.push fakeRandom ? random.nextInt(101) : j
             }
             d.push(row)
@@ -223,9 +224,6 @@ class DataService {
         for (int i = 0; i < rowCount; i++) {
             def row = [i]
             for (int j = 0; j < COL_COUNT; j++) {
-                //row.push(random.nextInt(101))
-                //row.push(j)
-
                 row.push fakeRandom ? random.nextInt(101) : j
             }
             d.push(row)
@@ -242,8 +240,6 @@ class DataService {
         for (int i = 0; i < rowCount; i++) {
             def row = [i]
             for (int j = 0; j < COL_COUNT; j++) {
-                //row.push(random.nextInt(101))
-                //row.push(j)
                 row.push fakeRandom ? random.nextInt(101) : j
             }
             d.push(row)
@@ -265,8 +261,6 @@ class DataService {
                 for (int firm = 0; firm < firmsPerInstance; firm++) {
                     def row = [cloud, firm, instance]
                     for (int j = 0; j < COL_COUNT; j++) {
-                       // row.push(random.nextInt(101))
-                       //row.push(j)
                        row.push fakeRandom ? random.nextInt(101) : j
                     }
                     d.push(row)
